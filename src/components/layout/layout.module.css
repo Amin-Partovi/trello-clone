@@ -1,0 +1,15 @@
+.container {
+  min-height: 100vh;
+  background-color: var(--primary);
+}
+
+.header {
+  background-color: var(--primary-dark);
+  color: var(--gray-90);
+  padding: 1rem 2rem;
+}
+
+.content {
+  padding: 1rem 2rem;
+  background-color: var(--primary);
+}
