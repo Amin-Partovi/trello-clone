@@ -1,0 +1,17 @@
+.button {
+  all: unset;
+  background-color: var(--gray-80);
+  color: var(--gray-10);
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 0.5rem 1.5rem;
+  font-weight: bold;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.outline {
+  background-color: transparent;
+  border: 1px solid var(--gray-90);
+  color: var(--gray-90);
+}
