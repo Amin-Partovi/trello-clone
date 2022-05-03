@@ -1,0 +1,20 @@
+.input {
+  all: unset;
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+  height: var(--input-height);
+  border: none;
+  background-color: var(--gray-90);
+  padding: 1rem;
+  margin: var(--input-margin);
+}
+
+.transparent {
+  background-color: transparent;
+  border: 1px solid var(--gray-90);
+  color: var(--gray-90);
+}
+
+.transparent::placeholder {
+  color: var(--gray-90);
+}

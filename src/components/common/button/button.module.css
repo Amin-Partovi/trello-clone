@@ -6,8 +6,12 @@
   border-radius: 10px;
   padding: 0.5rem 1.5rem;
   font-weight: bold;
-  margin: 0.5rem;
+  margin: var(--input-margin);
   cursor: pointer;
+  height: var(--input-height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .outline {
