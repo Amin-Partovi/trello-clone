@@ -1,30 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-import Button from "./components/common/button/Button";
+import AddColumnForm from "./components/addColumnForm/AddColumnForm";
 import Layout from "./components/layout/Layout";
-import texts from "./texts/texts";
-import Input from "./components/common/input/Input";
-import styles from "./app.module.css";
 
 const App: React.FC = () => {
-  const [showInput, setShowInput] = useState<boolean>(false);
+  const [columns, setColumns] = useState<string[]>([]);
 
-  function handleClick() {
-    setShowInput(true);
+  function handleSubmit(value: string) {
+    setColumns((columns) => [...columns, value]);
   }
+
   return (
     <Layout>
-      {!showInput ? (
-        <Button outline className={styles["add-column"]} onClick={handleClick}>
-          {texts.ADD_COLUMN}
-        </Button>
-      ) : (
-        <Input
-          transparent
-          placeholder={texts.COLUMN_NAME}
-          className={styles["add-column"]}
-        />
-      )}
+      <AddColumnForm onSubmit={handleSubmit} />
     </Layout>
   );
 };
