@@ -1,25 +1,25 @@
 import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
 import texts from "../../texts/texts";
 import Card from "../card/Card";
 import Input from "../common/input/Input";
 import Button from "../common/button/Button";
+import Textarea from "../common/textarea/Textarea";
+import { Card as CardInterface } from "../../App";
 
 import styles from "./column.module.css";
-import Textarea from "../common/textarea/Textarea";
 
 interface Props {
-  name: string;
+  status: string;
+  cards: CardInterface[];
+  onSubmitForm: (value: CardInterface) => void;
+  onDrop: (value: CardInterface, status: string) => void;
 }
 
-interface Card {
-  title: string;
-  description: string;
-}
-
-const Column: React.FC<Props> = ({ name }) => {
+const Column: React.FC<Props> = ({ status, cards=[], onSubmitForm, onDrop }) => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [cards, setCards] = useState<Card[]>([]);
   const [showCardForm, setShowCardForm] = useState<boolean>(false);
 
   function handleChangeTitle(event: React.ChangeEvent<HTMLInputElement>) {
@@ -36,10 +36,27 @@ const Column: React.FC<Props> = ({ name }) => {
     setShowCardForm(true);
   }
 
+  function handleDragStart(
+    event: React.DragEvent<HTMLDivElement>,
+    card: CardInterface
+  ) {
+    event.dataTransfer.setData("Object", JSON.stringify(card));
+  }
+
+  function handleDrop(event: React.DragEvent<HTMLDivElement>, status: string) {
+    event.preventDefault();
+    var data = JSON.parse(event.dataTransfer.getData("Object"));
+    onDrop(data, status);
+  }
+
+  function handleDragOver(event: React.DragEvent<HTMLDivElement>) {
+    event.preventDefault();
+  }
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (title.trim()) {
-      setCards((cards) => [...cards, { title, description }]);
+      onSubmitForm({ title, description, status, id: uuidv4() });
       setTitle("");
       setDescription("");
       setShowCardForm(false);
@@ -49,16 +66,27 @@ const Column: React.FC<Props> = ({ name }) => {
   return (
     <div className={styles.column}>
       <div className={styles.header}>
-        <h3>{name}</h3>
+        <h3>{status}</h3>
       </div>
-      <div className={styles["card-box"]}>
-        {cards.map((card) => (
-          <Card
-            title={card.title}
-            description={card.description}
-            key={card.title}
-          />
-        ))}
+      <div
+        className={styles["card-box"]}
+        onDrop={(event) => handleDrop(event, status)}
+        onDragOver={handleDragOver}
+      >
+        {cards.map((card) => {
+          if (card.status === status) {
+            return (
+              <Card
+                title={card.title}
+                description={card.description}
+                key={card.id}
+                onDragStart={(event) => handleDragStart(event, card)}
+              />
+            );
+          } else {
+            return <></>;
+          }
+        })}
       </div>
       {showCardForm && (
         <form onSubmit={handleSubmit} className={styles["add-card-form"]}>
@@ -66,6 +94,7 @@ const Column: React.FC<Props> = ({ name }) => {
             placeholder={texts.ADD_TITLE}
             onChange={handleChangeTitle}
             className={styles.title}
+            autoFocus={true}
           />
           <Textarea
             placeholder={texts.ADD_DESCRIPTION}

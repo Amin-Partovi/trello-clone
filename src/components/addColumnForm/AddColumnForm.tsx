@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import texts from "../../texts/texts";
 import Input from "../common/input/Input";
 import Button from "../common/button/Button";
+
 import styles from "./add-column-form.module.css";
 
 interface Props {
@@ -29,7 +30,7 @@ const AddColumnForm: React.FC<Props> = ({ onSubmit }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} >
       {!showInput ? (
         <Button
           outline

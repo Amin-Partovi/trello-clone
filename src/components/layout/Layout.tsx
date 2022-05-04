@@ -1,6 +1,7 @@
 import React from "react";
 
 import texts from "../../texts/texts";
+
 import styles from "./layout.module.css";
 
 interface Props extends React.PropsWithChildren<any> {}

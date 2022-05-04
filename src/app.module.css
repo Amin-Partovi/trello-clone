@@ -1,5 +1,4 @@
-
-.col{
-    width: 200px;
-    border: 1px solid white;
+.form-container {
+  display: flex;
+  gap: 3rem;
 }

@@ -5,9 +5,10 @@ const texts={
  ADD_CARD:"+ Add a Card",
  ADD_TITLE:"Add a Title",
  ADD_DESCRIPTION:"Add a Description",
- SAVE:"save",
- TITLE:"title",
- DESCRIPTION:"description"
+ SAVE:"Save",
+ TITLE:"Title",
+ DESCRIPTION:"Description",
+ RESET:"Reset The Board"
 }
 
 export default texts;
