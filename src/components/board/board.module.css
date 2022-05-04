@@ -1,0 +1,7 @@
+.board {
+  display: flex;
+  gap: 2rem;
+  height: 100%;
+  align-items: flex-start;
+  margin: 2rem 0;
+}

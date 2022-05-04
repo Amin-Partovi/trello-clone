@@ -1,0 +1,17 @@
+.column {
+  padding: 1rem;
+  background-color: var(--gray-80);
+  border-radius: var(--border-radius);
+  width: 20rem;
+
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 2.5rem;
+  color: var(--gray-10);
+  border-bottom: 1px solid var(--gray-90);
+  margin-bottom: 2rem;
+}
