@@ -1,11 +1,11 @@
-.input {
+.textarea {
   all: unset;
   box-sizing: border-box;
   border-radius: var(--border-radius);
-  height: var(--input-height);
   border: none;
   background-color: var(--white);
   padding: 1rem;
+  word-break: break-all;
   width: 100%;
 }
 
