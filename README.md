@@ -45,7 +45,22 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+features you can find:
+----------------------
+
+1\. user can add column, the name of the column is its status.  
+2\. user can create card with a title, the description is optional.  
+3\. user can edit card.  
+4\. user can move card between columns using drag and drop.  
+5\. columns and cards data are persisted in localStorage.  
+6\. user can remove all the data from the state and localstorage by pressing reset button.
+
+
 ## features need to release a real app
 
-there are many features needed for creating a real app following there are some of the necessary ones 1. user should be able to remove a card. 2. user should be able to add subtasks to the card through checkboxes. 3. columns and cards data should be stored in database and should be available through the api calls
+**there are many features needed for creating a real app following there are some of the necessary ones**
+
+1\. user should be able to remove a card.  
+2\. user should be able to add subtasks to the card through checkboxes.  
+3\. columns and cards data should be stored in database and should be available through the api calls
 
