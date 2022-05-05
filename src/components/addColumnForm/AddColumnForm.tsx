@@ -24,13 +24,15 @@ const AddColumnForm: React.FC<Props> = ({ onSubmit }) => {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    onSubmit(columnName);
-    setColumnName("");
-    setShowInput(false);
+    if (columnName.trim().length) {
+      onSubmit(columnName);
+      setColumnName("");
+      setShowInput(false);
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit} >
+    <form onSubmit={handleSubmit} data-testid="add-column-form">
       {!showInput ? (
         <Button
           outline
@@ -46,6 +48,7 @@ const AddColumnForm: React.FC<Props> = ({ onSubmit }) => {
           className={styles["add-column"]}
           onChange={handleChangeInput}
           autoFocus={true}
+          data-testid="add-column-input"
         />
       )}
     </form>

@@ -68,13 +68,14 @@ const App: React.FC = () => {
         )}
       </div>
       <Board>
-        {columns.map((col) => (
+        {columns.map((col, index) => (
           <Column
             status={col}
-            key={col}
+            key={index}
             cards={cards}
             onSubmitForm={handleSubmitCard}
             onDrop={handleDrop}
+
           />
         ))}
       </Board>

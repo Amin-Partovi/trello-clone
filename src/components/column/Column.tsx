@@ -17,7 +17,12 @@ interface Props {
   onDrop: (value: CardInterface, status: string) => void;
 }
 
-const Column: React.FC<Props> = ({ status, cards=[], onSubmitForm, onDrop }) => {
+const Column: React.FC<Props> = ({
+  status,
+  cards = [],
+  onSubmitForm,
+  onDrop,
+}) => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [showCardForm, setShowCardForm] = useState<boolean>(false);
@@ -55,7 +60,7 @@ const Column: React.FC<Props> = ({ status, cards=[], onSubmitForm, onDrop }) => 
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (title.trim()) {
+    if (title.trim().length) {
       onSubmitForm({ title, description, status, id: uuidv4() });
       setTitle("");
       setDescription("");
@@ -64,7 +69,7 @@ const Column: React.FC<Props> = ({ status, cards=[], onSubmitForm, onDrop }) => 
   }
 
   return (
-    <div className={styles.column}>
+    <div className={styles.column} data-testid="column">
       <div className={styles.header}>
         <h3>{status}</h3>
       </div>
@@ -83,8 +88,6 @@ const Column: React.FC<Props> = ({ status, cards=[], onSubmitForm, onDrop }) => 
                 onDragStart={(event) => handleDragStart(event, card)}
               />
             );
-          } else {
-            return <></>;
           }
         })}
       </div>
