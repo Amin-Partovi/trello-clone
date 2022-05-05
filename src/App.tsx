@@ -40,7 +40,12 @@ const App: React.FC = () => {
   }
 
   function handleSubmitCard(newCard: Card) {
-    setCards([...cards, newCard]);
+    if (cards.some((card) => card.id === newCard.id)) {
+      let filteredCards = cards.filter((card) => card.id !== newCard.id);
+      setCards([...filteredCards, newCard]);
+    } else {
+      setCards([...cards, newCard]);
+    }
   }
 
   function handleSubmitColumn(newColumn: string) {
@@ -75,7 +80,6 @@ const App: React.FC = () => {
             cards={cards}
             onSubmitForm={handleSubmitCard}
             onDrop={handleDrop}
-
           />
         ))}
       </Board>

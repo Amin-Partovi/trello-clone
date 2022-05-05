@@ -44,3 +44,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## features need to release a real app
+
+there are many features needed for creating a real app following there are some of the necessary ones 1. user should be able to remove a card. 2. user should be able to add subtasks to the card through checkboxes. 3. columns and cards data should be stored in database and should be available through the api calls
+

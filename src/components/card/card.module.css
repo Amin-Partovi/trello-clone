@@ -4,8 +4,17 @@
   border-radius: var(--border-radius);
   padding: 1rem;
   color: var(--gray-10);
-  box-shadow: 0px 0px 9px -1px rgba(0,0,0,0.18);
+  box-shadow: 0px 0px 9px -1px rgba(0, 0, 0, 0.18);
   word-break: break-all;
 }
 
+.edit-box {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
 
+.edit {
+  width: 1.5rem;
+  cursor: pointer;
+}

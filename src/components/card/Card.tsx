@@ -1,15 +1,24 @@
 import React from "react";
 
-import styles from "./card.module.css";
 import texts from "../../texts/texts";
+import Edit from "../../assets/edit.png";
+import { Card as CardInterface } from "../../App";
+
+import styles from "./card.module.css";
 
 interface Props {
-  title: string;
-  description: string;
+  card: CardInterface;
   onDragStart: (event: React.DragEvent<HTMLDivElement>) => void;
+  onEdit: (card: CardInterface) => void;
 }
 
-const Card: React.FC<Props> = ({ title, description, onDragStart }) => {
+const Card: React.FC<Props> = ({ card, onDragStart, onEdit }) => {
+  const { title, description } = card;
+
+  function handleClick() {
+    onEdit(card);
+  }
+  
   return (
     <div
       className={styles.card}
@@ -17,6 +26,9 @@ const Card: React.FC<Props> = ({ title, description, onDragStart }) => {
       onDragStart={onDragStart}
       id="card"
     >
+      <div className={styles["edit-box"]}>
+        <img src={Edit} className={styles.edit} onClick={handleClick} />
+      </div>
       <p>
         {texts.TITLE}: <strong>{title}</strong>
       </p>

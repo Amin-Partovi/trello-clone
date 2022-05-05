@@ -26,6 +26,7 @@ const Column: React.FC<Props> = ({
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [showCardForm, setShowCardForm] = useState<boolean>(false);
+  const [cardId, setCardId] = useState<string>("");
 
   function handleChangeTitle(event: React.ChangeEvent<HTMLInputElement>) {
     setTitle(event.target.value);
@@ -58,10 +59,22 @@ const Column: React.FC<Props> = ({
     event.preventDefault();
   }
 
+  function handleEdit(card: CardInterface) {
+    setShowCardForm(true);
+    setDescription(card.description);
+    setTitle(card.title);
+    setCardId(card.id);
+  }
+
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (title.trim().length) {
-      onSubmitForm({ title, description, status, id: uuidv4() });
+      if (cardId) {
+        onSubmitForm({ title, description, status, id: cardId });
+      } else {
+        onSubmitForm({ title, description, status, id: uuidv4() });
+      }
+      setCardId("");
       setTitle("");
       setDescription("");
       setShowCardForm(false);
@@ -82,10 +95,10 @@ const Column: React.FC<Props> = ({
           if (card.status === status) {
             return (
               <Card
-                title={card.title}
-                description={card.description}
+                card={card}
                 key={card.id}
                 onDragStart={(event) => handleDragStart(event, card)}
+                onEdit={handleEdit}
               />
             );
           }
@@ -98,11 +111,13 @@ const Column: React.FC<Props> = ({
             onChange={handleChangeTitle}
             className={styles.title}
             autoFocus={true}
+            value={title}
           />
           <Textarea
             placeholder={texts.ADD_DESCRIPTION}
             onChange={handleChangeDescription}
             className={styles.description}
+            value={description}
           />
           <Button>{texts.SAVE}</Button>
         </form>
