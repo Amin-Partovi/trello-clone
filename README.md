@@ -45,7 +45,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-features you can find:
+features you can find
 ----------------------
 
 1\. user can add column, the name of the column is its status.  
@@ -54,6 +54,7 @@ features you can find:
 4\. user can move card between columns using drag and drop.  
 5\. columns and cards data are persisted in localStorage.  
 6\. user can remove all the data from the state and localstorage by pressing reset button.
+7\. A few unit and integration tests have been written but due to lack of time these tests do not cover the software completely.
 
 
 ## features need to release a real app
